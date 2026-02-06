@@ -1,0 +1,19 @@
+@import './variables.css';
+
+.jp-ThemedContainer tt,
+.jp-ThemedContainer code,
+.jp-ThemedContainer kbd,
+.jp-ThemedContainer samp,
+.jp-ThemedContainer pre {
+  font-family: var(--jp-code-font-family);
+  font-size: var(--jp-code-font-size);
+  line-height: var(--jp-code-line-height);
+}
+
+:where(
+    .jp-RenderedText[data-mime-type='application/vnd.jupyter.stderr']
+      pre
+      .ansi-yellow-bg
+  ) {
+  color: black;
+}

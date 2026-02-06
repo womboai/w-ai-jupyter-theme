@@ -1,0 +1,39 @@
+{
+  "name": "jupyterlab-theme-wai",
+  "version": "1.0.0",
+  "description": "w.ai dark theme for JupyterLab",
+  "license": "MIT",
+  "author": "w.ai",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "sideEffects": true,
+  "files": [
+    "lib/**/*.{d.ts,js,js.map}",
+    "style/**/*.css"
+  ],
+  "scripts": {
+    "build": "tsc -b && jupyter labextension build .",
+    "clean": "rimraf lib tsconfig.tsbuildinfo"
+  },
+  "dependencies": {
+    "@jupyterlab/application": "^4.0.0",
+    "@jupyterlab/apputils": "^4.0.0"
+  },
+  "devDependencies": {
+    "@jupyterlab/builder": "^4.0.0",
+    "rimraf": "~5.0.5",
+    "typescript": "~5.5.0"
+  },
+  "browserslist": [
+    "defaults",
+    "not ie 11"
+  ],
+  "jupyterlab": {
+    "extension": true,
+    "themePath": "style/index.css",
+    "_build": {
+      "load": "static/remoteEntry.b2961955b9db6aa6bbe6.js",
+      "extension": "./extension"
+    }
+  }
+}

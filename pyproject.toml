@@ -1,0 +1,30 @@
+[build-system]
+requires = ["hatchling>=1.5.0", "jupyterlab>=4.0.0,<5", "hatch-nodejs-version>=0.3.2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "jupyterlab-theme-wai"
+version = "1.0.0"
+description = "w.ai dark theme for JupyterLab"
+license = { text = "MIT" }
+requires-python = ">=3.8"
+dependencies = []
+
+[tool.hatch.build.targets.sdist]
+artifacts = ["jupyterlab_theme_wai/labextension"]
+
+[tool.hatch.build.targets.wheel.shared-data]
+"jupyterlab_theme_wai/labextension" = "share/jupyter/labextensions/jupyterlab-theme-wai"
+"install.json" = "share/jupyter/labextensions/jupyterlab-theme-wai/install.json"
+
+[tool.hatch.build.hooks.jupyter-builder]
+dependencies = ["hatch-jupyter-builder>=0.5"]
+build-function = "hatch_jupyter_builder.npm_builder"
+ensured-targets = [
+    "jupyterlab_theme_wai/labextension/package.json",
+]
+skip-if-exists = ["jupyterlab_theme_wai/labextension/static/style.js"]
+
+[tool.hatch.build.hooks.jupyter-builder.build-kwargs]
+build_cmd = "build"
+npm = ["jlpm"]
